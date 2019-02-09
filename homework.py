@@ -2,10 +2,12 @@ from stu import stu
 from stu import login
 from stu import changepass
 from stu import changepass
+import books
 import os.path
 import xlwt
 import xlrd
 import string
+import time
 from xlutils.copy import copy
 #初始学生名单
 if os.path.exists('heka.xls')==False :
@@ -57,18 +59,54 @@ while(flag1):
             newpassword=input('输入新密码:    ');
             if changepass(name,newpassword):
                flag2=0;
+        elif choose==1121:
+            break;
         else:
             print('啥子啊');
+            time.sleep(1);
         os.system("cls");
-
-
     while(flag3):
-        print("******well come to Book Mannage Center******")
-        print('操作1234567');
-        choose=input('选择操作：')
-
-
-        break;
+        print("******wellcome to Book Mannage Center******")
+        print('操作\n1:查询所有书籍信息\n2:通过书名查询一本书  \
+                         \n3:通过价格查询书籍\n4:添加一本书\n5:删除一本书 \
+                         \n6:修改一本书\n7:退出系统\n');
+        choose=int(input('选择操作：'));
+        if choose==1:
+            books.show_all();
+            print("5s后退出");
+            time.sleep(5);
+            print("test1");
+        elif choose==2:
+            name=string(input('请输入名字：'));
+            print(name);
+            books.show_by_name(name);
+            print("test2");
+        elif choose==3:
+            price=input('请输入价格：');
+            print(price);
+            books.show_by_price();
+            print("test3");
+        elif choose==4:
+            #添加书
+            print("test4");
+        elif choose==5:
+            #删除书
+            print("test5");
+        elif choose==6:
+            #修改书
+            print("test6");
+        elif choose==7:
+            for i in range(0,3):
+                print("欢迎使用图书馆系统",3-i,"秒后返回 欢迎下次再来！");
+                time.sleep(1);
+                if i==3:break;
+            flag1=0;
+            break;
+        else:
+            print("请正确输入");
+            time.sleep(1);
+        time.sleep(1);
+        os.system("cls");
 
 
 
@@ -93,8 +131,3 @@ while(flag1):
 #newbook.save('heka.xls');
 
 #changepass('gu','guagua');
-
-
-
-
-
