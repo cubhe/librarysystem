@@ -45,13 +45,60 @@ def show_all():
     rowNum=sheet.nrows;
     colNum=sheet.ncols;
     print(rowNum,colNum);
+    print("书名  作者  分类  价格  描述")
+    for i in range(1,rowNum):
+        print(sheet.cell(i,1).value,sheet.cell(i,2).value,sheet.cell(i,3).value,sheet.cell(i,4).value,sheet.cell(i,5).value);
+    return True;
+def show_by_name(name):
+    filename='books.xls';
+    testbook=xlrd.open_workbook(filename,formatting_info=True);
+    sheet=testbook.sheet_by_index(0);
+    rowNum=sheet.nrows;
+    colNum=sheet.ncols;
+    booknum=0;
     for i in range(1,rowNum):
         temp=sheet.cell(i,1).value;
-        print(temp);
+        print(name,'  ',temp);
+        if( name== temp ):
+            print(sheet.cell(i,1).value,sheet.cell(i,2).value,sheet.cell(i,3).value,sheet.cell(i,4).value,sheet.cell(i,5).value);
+            print('get it ');
+            booknum+=1 ;
+    print("找到",booknum,"本书");
     return True;
-def show_by_name():
+def show_by_price(price):
+    filename='books.xls';
+    testbook=xlrd.open_workbook(filename,formatting_info=True);
+    sheet=testbook.sheet_by_index(0);
+    rowNum=sheet.nrows;
+    colNum=sheet.ncols;
+    price=float(price);
+    for i in range(1,rowNum):
+        temp=float(sheet.cell(i,4).value);
+        #print(name,'  ',temp);
+        if( price== temp ):
+            print(sheet.cell(i,1).value,sheet.cell(i,2).value,sheet.cell(i,3).value,sheet.cell(i,4).value,sheet.cell(i,5).value);
+            #print('get it ');
+            break;
     return True;
-def show_by_price():
-    return True;
-def delete_book():
+def delete_book(name):
+    filename='books.xls';
+    testbook=xlrd.open_workbook(filename,formatting_info=True);
+    sheet=testbook.sheet_by_index(0);
+    rowNum=sheet.nrows;
+    colNum=sheet.ncols;
+    print(rowNum,colNum);
+    newbook=copy(testbook);
+    newsheet=newbook.get_sheet(0);
+    for i in range(1,rowNum):
+        temp=sheet.cell(i,1).value;
+        #print(name,'  ',temp);
+        if( name== temp ):
+            print('删除成功');
+            print('get it ');
+            newsheet.write(i,1,' ');
+            newsheet.write(i,2,' ');
+            newsheet.write(i,3,' ');
+            newsheet.write(i,4,' ');
+            break;
+    newbook.save('books.xls');
     return True;

@@ -75,22 +75,25 @@ while(flag1):
             books.show_all();
             print("5s后退出");
             time.sleep(5);
-            print("test1");
+            print("test1.done");
         elif choose==2:
-            name=string(input('请输入名字：'));
+            name=input('请输入名字：');
             print(name);
             books.show_by_name(name);
+            time.sleep(5);
             print("test2");
         elif choose==3:
             price=input('请输入价格：');
             print(price);
-            books.show_by_price();
+            books.show_by_price(price);
+            time.sleep(5);
             print("test3");
         elif choose==4:
             #添加书
             print("test4");
         elif choose==5:
-            #删除书
+            name=input("book name：")
+            books.delete_book(name);
             print("test5");
         elif choose==6:
             #修改书
