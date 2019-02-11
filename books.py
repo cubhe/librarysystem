@@ -28,8 +28,13 @@ class book:
         colNum=sheet.ncols;
         newbook=copy(testbook);
         newsheet=newbook.get_sheet(0);
-        newsheet.write(rowNum,0,self.name);
-        newsheet.write(rowNum,1,self.password)
+        newsheet.write(rowNum,0,rowNum);
+        newsheet.write(rowNum,1,self.name);
+        newsheet.write(rowNum,2,self.author);
+        newsheet.write(rowNum,3,self.category);
+        newsheet.write(rowNum,4,self.price);
+        newsheet.write(rowNum,5,self.desc);
+        newsheet.write(rowNum,6,self.pubulish_data);
         newbook.save('books.xls');
         return True;
     
