@@ -37,11 +37,6 @@ class book:
         newsheet.write(rowNum,6,self.pubulish_data);
         newbook.save('books.xls');
         return True;
-    
-
-    def changebook(self,newinfo):
-        
-        return True;
 
 def show_all():
     filename='books.xls';
@@ -85,6 +80,28 @@ def show_by_price(price):
             #print('get it ');
             break;
     return True;
+def changebook(newinfo):
+    filename='books.xls';
+    testbook=xlrd.open_workbook(filename,formatting_info=True);
+    sheet=testbook.sheet_by_index(0);
+    rowNum=sheet.nrows;
+    colNum=sheet.ncols;
+    print(rowNum,colNum);
+    newbook=copy(testbook);
+    newsheet=newbook.get_sheet(0);
+    for i in range(1,rowNum):
+        temp=sheet.cell(i,1).value;
+        #print(name,'  ',temp);
+        if( newinfo.name== temp ):
+            print('get it ');
+            newsheet.write(i,2,newinfo.author);
+            newsheet.write(i,3,newinfo.category);
+            newsheet.write(i,4,newinfo.price);
+            newsheet.write(i,5,newinfo.desc);
+            break;
+    newbook.save('books.xls');
+    return True;
+
 def delete_book(name):
     filename='books.xls';
     testbook=xlrd.open_workbook(filename,formatting_info=True);

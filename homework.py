@@ -99,7 +99,14 @@ while(flag1):
             books.delete_book(name);
             print("test5");
         elif choose==6:
-            #修改书
+            newinfo=books.book();
+            newinfo.name=input('name:  ');
+            newinfo.author=input('author:   ');
+            newinfo.category=input('category:   ');
+            newinfo.price=input('price:   ');
+            newinfo.desc=input('desc:   ');
+            newinfo.writedata();
+            books.changebook(newinfo);
             print("test6");
         elif choose==7:
             for i in range(0,3):
