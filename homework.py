@@ -10,6 +10,7 @@ import string
 import time
 from xlutils.copy import copy
 #初始学生名单
+#先检查是否存在该excel文件 如果存在跳过 如果不存在则需要initialization
 if os.path.exists('heka.xls')==False :
     testbook=xlwt.Workbook();
     worksheet=testbook.add_sheet('kaka');
@@ -31,7 +32,7 @@ if os.path.exists('books.xls')==False :
     testbook.save('books.xls');#xlsx or xls
 
 #main
-
+#三个循环只有登录后才能进入书籍管理系统
 flag1=True;flag2=True;flag3=True;
 while(flag1):
     while(flag2):

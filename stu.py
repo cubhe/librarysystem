@@ -1,3 +1,5 @@
+#建立试图用户对象实现注册功能
+#通过xlwt与xlrd查表实现登录和修改密码功能
 import xlwt
 import xlrd
 import string

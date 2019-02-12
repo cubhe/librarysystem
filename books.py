@@ -1,3 +1,5 @@
+#建立book对象 实现书籍的添加与写入数据库
+#通过xlwt与xlrd实现对excel文件的访问
 import numpy as np
 import xlwt
 import xlrd
@@ -101,7 +103,6 @@ def changebook(newinfo):
             break;
     newbook.save('books.xls');
     return True;
-
 def delete_book(name):
     filename='books.xls';
     testbook=xlrd.open_workbook(filename,formatting_info=True);
